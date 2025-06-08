@@ -42,7 +42,7 @@ const AdminDashboard = () => {
     setIsLoading(true);
     setApiError(null);
     try {
-      const response = await axios.get('http://kedarling-yatri-niwas-backend.vercel.app/api/admin/bookings');
+      const response = await axios.get('https://kedarling-yatri-niwas-backend.vercel.app/api/admin/bookings');
       if (response.data && Array.isArray(response.data.bookings)) {
         setBookings(response.data.bookings);
       } else {
@@ -61,7 +61,7 @@ const AdminDashboard = () => {
   const handleLogin = async () => {
     setError('');
     try {
-      const response = await axios.post('http://kedarling-yatri-niwas-backend.vercel.app/api/admin/login', {
+      const response = await axios.post('https://kedarling-yatri-niwas-backend.vercel.app/api/admin/login', {
         username,
         password
       });
@@ -78,7 +78,7 @@ const AdminDashboard = () => {
 
   const handleCheckout = async () => {
     try {
-      await axios.put(`http://kedarling-yatri-niwas-backend.vercel.app/api/bookings/${selectedBooking._id}/checkout`);
+      await axios.put(`https://kedarling-yatri-niwas-backend.vercel.app/api/bookings/${selectedBooking._id}/checkout`);
       fetchBookings();
       setOpenCheckoutDialog(false);
     } catch (error) {
