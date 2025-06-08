@@ -108,7 +108,7 @@ const BookingForm = () => {
   const fetchAvailableRooms = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://kedarling-yatri-niwas-backend.vercel.app/api/rooms/available/${roomType}`);
+      const response = await axios.get(`https://kedarling-yatri-niwas-backend.vercel.app/api/rooms/available/${roomType}`);
       setAvailableRooms(response.data);
     } catch (error) {
       console.error('Error fetching available rooms:', error);
@@ -176,7 +176,7 @@ const addRoomToSelection = (roomNumber) => {
         formData.append('paymentProof', paymentProof);
       }
       
-      const response = await axios.post('http://kedarling-yatri-niwas-backend.vercel.app/api/bookings', formData, {
+      const response = await axios.post('https://kedarling-yatri-niwas-backend.vercel.app/api/bookings', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -202,7 +202,7 @@ const addRoomToSelection = (roomNumber) => {
   const handleCompletePayment = async () => {
     setLoading(true);
     try {
-      await axios.put(`http://kedarling-yatri-niwas-backend.vercel.app/api/bookings/${bookingId}/payment`, {
+      await axios.put(`https://kedarling-yatri-niwas-backend.vercel.app/api/bookings/${bookingId}/payment`, {
         paymentStatus: 'paid',
         paymentConfirmed: true
       });
