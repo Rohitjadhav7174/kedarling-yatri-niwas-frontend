@@ -207,6 +207,8 @@ import HomeImg from "./home.jpg";
 
  import rankala from "../../Assets/Rankala.png";
 import room from "../../Assets/rooms.png";
+import temple from "../../Assets/Urban Harmony at Sunset (2).png";
+
 // Mock images - replace these with your actual image imports
 // const kd = "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop";
 // const rankala = "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=600&h=400&fit=crop";
@@ -247,8 +249,9 @@ const HotelInfo = () => {
         background: "linear-gradient(135deg, #fafbfc 0%, #f1f5f9 50%, #e2e8f0 100%)",
         minHeight: "100vh",
         position: "relative",
-        overflow: "hidden",
+        overflowX: "hidden",
         paddingBottom: "80px",
+        boxSizing:"border-box",
       }}
     >
       {/* Floating Background Elements */}
@@ -326,8 +329,9 @@ const HotelInfo = () => {
         >
           <Box
             component="img"
-            src={kd}
-            alt="Kedarling Yatri Nivas"
+            src={temple}
+                  alt="Mahalaxmi Temple, Kolhapur"
+
             sx={{
               width: "100%",
               height: { xs: "280px", md: "420px" },
@@ -371,7 +375,7 @@ const HotelInfo = () => {
               letterSpacing: "-0.01em",
             }}
           >
-            Welcome to Kedarling Yatri Nivas
+      Shri Mahalaxmi Temple
           </Typography>
           <Typography
             variant="body1"
@@ -383,11 +387,10 @@ const HotelInfo = () => {
               fontWeight: 400,
             }}
           >
-            Since 1955, we have been a cornerstone of Kolhapur's hospitality industry.
-            Our heritage spans generations, built on a foundation of quality, tradition,
-            and unwavering commitment to excellence. From humble beginnings to becoming
-            a trusted name, we continue to evolve while maintaining our core values of
-            hygiene, taste, and customer satisfaction.
+            The temple architecture shows traces of Chalukya and Yadava styles. The temple is believed to have been built
+      in the 7th century CE, with later additions in the 10th century. The temple complex includes several shrines,
+      with the central shrine housing the deity - a 3-foot-high stone sculpture of Goddess Mahalaxmi, adorned with
+      ancient jewelry and weighing about 40 kilograms.
           </Typography>
         </Box>
       </Box>
@@ -588,6 +591,120 @@ const HotelInfo = () => {
           </Typography>
         </Box>
       </Box>
+
+      {/* Section 4 - Mahalaxmi Temple */}
+<Box
+  id="section-4"
+  className="animate-section"
+  sx={{
+    display: "flex",
+    flexDirection: { xs: "column", lg: "row-reverse" },
+    alignItems: "center",
+    justifyContent: "center",
+    gap: { xs: "40px", md: "60px", lg: "80px" },
+    padding: { xs: "40px 0", md: "80px 0" },
+    margin: { xs: "40px 0", md: "60px 0" },
+    position: "relative",
+    zIndex: 1,
+  }}
+>
+  {/* Image Container */}
+  <Box
+    sx={{
+      flex: 1,
+      maxWidth: { xs: "100%", lg: "600px" },
+      position: "relative",
+      transform: isVisible["section-4"] ? "translateY(0) scale(1)" : "translateY(30px) scale(0.95)",
+      opacity: isVisible["section-4"] ? 1 : 0,
+      transition: "all 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s",
+    }}
+  >
+    <Box
+      component="img"
+      src={kd}
+      alt="Kedarling Yatri Nivas"
+
+      sx={{
+        width: "100%",
+        height: { xs: "280px", md: "420px" },
+        objectFit: "cover",
+        borderRadius: "24px",
+        boxShadow: "0 25px 60px rgba(0, 0, 0, 0.12), 0 10px 30px rgba(0, 0, 0, 0.08)",
+        transition: "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+        cursor: "pointer",
+        "&:hover": {
+          transform: "scale(1.03) translateY(-5px)",
+          boxShadow: "0 35px 80px rgba(0, 0, 0, 0.15), 0 15px 40px rgba(0, 0, 0, 0.1)",
+        },
+      }}
+    />
+  </Box>
+
+  {/* Content Container */}
+  <Box
+    sx={{
+      flex: 1,
+      maxWidth: { xs: "100%", lg: "650px" },
+      padding: { xs: "32px 24px", md: "48px 40px" },
+      background: "linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%)",
+      borderRadius: "28px",
+      boxShadow: "0 20px 50px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.04)",
+      backdropFilter: "blur(20px)",
+      border: "1px solid rgba(255, 255, 255, 0.4)",
+      transform: isVisible["section-4"] ? "translateY(0)" : "translateY(40px)",
+      opacity: isVisible["section-4"] ? 1 : 0,
+      transition: "all 0.9s cubic-bezier(0.16, 1, 0.3, 1)",
+    }}
+  >
+    <Typography
+      variant="h1"
+      sx={{
+        fontSize: { xs: "2rem", md: "3rem", lg: "3.5rem" },
+        fontWeight: 900,
+        background: "linear-gradient(135deg, #1e293b 0%, #475569 50%, #334155 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
+        marginBottom: { xs: "20px", md: "28px" },
+        lineHeight: "1.1",
+        letterSpacing: "-0.02em",
+      }}
+    >
+                  Welcome to Kedarling Yatri Nivas
+
+    </Typography>
+    <Typography
+      variant="body1"
+      sx={{
+        fontSize: { xs: "1rem", md: "1.15rem" },
+        lineHeight: "1.8",
+        color: "#475569",
+        textAlign: "justify",
+        fontWeight: 400,
+        marginBottom: "20px",
+      }}
+    >
+      The Shri Mahalaxmi Temple of Kolhapur is one of the Shakti Peethas listed in various puranas of Hinduism.
+    </Typography>
+    <Typography
+      variant="body1"
+      sx={{
+        fontSize: { xs: "1rem", md: "1.15rem" },
+        lineHeight: "1.8",
+        color: "#475569",
+        textAlign: "justify",
+        fontWeight: 400,
+      }}
+    >
+      Since 1955, we have been a cornerstone of Kolhapur's hospitality industry.
+            Our heritage spans generations, built on a foundation of quality, tradition,
+            and unwavering commitment to excellence. From humble beginnings to becoming
+            a trusted name, we continue to evolve while maintaining our core values of
+            hygiene, taste, and customer satisfaction.
+      
+    </Typography>
+  </Box>
+</Box>
 
       {/* Global Animation Styles */}
       <Box
