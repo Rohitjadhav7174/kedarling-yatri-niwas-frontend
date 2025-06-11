@@ -108,7 +108,7 @@ const BookingForm = () => {
   const fetchAvailableRooms = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://kedarling-yatri-niwas-backend.vercel.app/api/rooms/available/${roomType}`);
+      const response = await axios.get(`http://kedarling-yatri-niwas-backend.vercel.app/api/rooms/available/${roomType}`);
       setAvailableRooms(response.data);
     } catch (error) {
       console.error('Error fetching available rooms:', error);
@@ -150,59 +150,65 @@ const addRoomToSelection = (roomNumber) => {
 
 
 
-  const handleSubmitBooking = async () => {
-    setLoading(true);
-    try {
-      const formData = new FormData();
-      formData.append('customerName', customerName);
-      formData.append('customerPhone', customerPhone);
-      formData.append('customerEmail', customerEmail || '');
-      formData.append('customerAddress', customerAddress || '');
-      formData.append('roomType', roomType);
-      
-      // Send multiple rooms data
-      formData.append('selectedRooms', JSON.stringify(selectedRooms));
-      formData.append('totalRooms', selectedRooms.length);
-      
-      formData.append('checkInDate', new Date(checkInDate).toISOString());
-      formData.append('checkOutDate', new Date(checkOutDate).toISOString());
-      formData.append('arrivalTime', arrivalTime ? new Date(arrivalTime).toISOString() : '');
-      
-      formData.append('specialRequests', specialRequests || '');
-      formData.append('paymentMethod', paymentMethod);
-      formData.append('totalAmount', calculateTotal());
-      
-      if (paymentProof) {
-        formData.append('paymentProof', paymentProof);
-      }
-      
-      const response = await axios.post('https://kedarling-yatri-niwas-backend.vercel.app/api/bookings', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      
-      setBookingId(response.data._id);
-      setBookingSuccess(true);
-      
-      if (paymentMethod === 'online' && paymentConfirmed) {
-        setPaymentStatus('paid');
-      } else {
-        setPaymentStatus('pending');
-      }
-      
-    } catch (error) {
-      console.error('Error submitting booking:', error);
-      alert('Failed to submit booking. Please check your details and try again.');
-    } finally {
-      setLoading(false);
+  // ... (previous imports remain the same)
+
+const handleSubmitBooking = async () => {
+  setLoading(true);
+  try {
+    const formData = new FormData();
+    formData.append('customerName', customerName);
+    formData.append('customerPhone', customerPhone);
+    formData.append('customerEmail', customerEmail || '');
+    formData.append('customerAddress', customerAddress || '');
+    formData.append('roomType', roomType);
+    
+    // Send multiple rooms data
+    formData.append('selectedRooms', JSON.stringify(selectedRooms));
+    formData.append('totalRooms', selectedRooms.length);
+    
+    formData.append('checkInDate', new Date(checkInDate).toISOString());
+    formData.append('checkOutDate', new Date(checkOutDate).toISOString());
+    formData.append('arrivalTime', arrivalTime ? new Date(arrivalTime).toISOString() : '');
+    
+    formData.append('specialRequests', specialRequests || '');
+    formData.append('paymentMethod', paymentMethod);
+    formData.append('totalAmount', calculateTotal());
+    
+    if (paymentProof) {
+      formData.append('paymentProof', paymentProof);
     }
-  };
+    
+    const response = await axios.post('http://localhost:5001/api/bookings', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    
+    setBookingId(response.data._id);
+    setBookingSuccess(true);
+    
+    if (paymentMethod === 'online' && paymentConfirmed) {
+      setPaymentStatus('paid');
+    } else {
+      setPaymentStatus('pending');
+    }
+    
+    // Show success alert
+    alert('Booking confirmed! Confirmation emails have been sent to you and the hotel.');
+    
+  } catch (error) {
+    console.error('Error submitting booking:', error);
+    alert('Failed to submit booking. Please check your details and try again.');
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const handleCompletePayment = async () => {
     setLoading(true);
     try {
-      await axios.put(`https://kedarling-yatri-niwas-backend.vercel.app/api/bookings/${bookingId}/payment`, {
+      await axios.put(`http:/localhost:5001/api/bookings/${bookingId}/payment`, {
         paymentStatus: 'paid',
         paymentConfirmed: true
       });
