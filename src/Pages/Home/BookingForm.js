@@ -178,7 +178,7 @@ const handleSubmitBooking = async () => {
       formData.append('paymentProof', paymentProof);
     }
     
-    const response = await axios.post('https://kedarling-yatri-niwas-backend.vercel.app//api/bookings', formData, {
+    const response = await axios.post('https://kedarling-yatri-niwas-backend.vercel.app/api/bookings', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
