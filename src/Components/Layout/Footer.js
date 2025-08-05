@@ -246,21 +246,21 @@ const CompactFooter = () => {
                 >
                   info@kedarlingyatrinivas.com
                 </a>
-                <a 
-                  href="tel:0231-2626777"
+                 <a 
+                  href="tel:+917028174997"
                   style={footerStyles.contactLink}
                   onMouseEnter={(e) => e.target.style.color = '#ff6b35'}
                   onMouseLeave={(e) => e.target.style.color = '#666'}
                 >
-                  0231-2626777
+                    Satish Manager 
                 </a>
                 <a 
-                  href="tel:9890955077"
+                  href="tel:917028174997"
                   style={footerStyles.contactLink}
                   onMouseEnter={(e) => e.target.style.color = '#ff6b35'}
                   onMouseLeave={(e) => e.target.style.color = '#666'}
                 >
-                  9890955077
+                  +917028174997
                 </a>
               </div>
             </div>
@@ -311,5 +311,6 @@ const CompactFooter = () => {
     </>
   );
 };
+
 
 export default CompactFooter;
