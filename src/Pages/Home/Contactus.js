@@ -29,7 +29,9 @@ const Contactus = () => {
                             <Typography gutterBottom>
                                 📍Kolhapur , India
                             </Typography>
-                            <Typography gutterBottom>📞 +91 98765 43210</Typography>
+                            <Typography gutterBottom>📞 Satish Manager </Typography>
+                             <Typography gutterBottom>📞 +91 7028174997</Typography>
+
                             <Typography gutterBottom>📧 contact@hotelbliss.com</Typography>
 
                             <Box mt={3}>
@@ -85,3 +87,4 @@ const Contactus = () => {
 };
 
 export default Contactus;
+
