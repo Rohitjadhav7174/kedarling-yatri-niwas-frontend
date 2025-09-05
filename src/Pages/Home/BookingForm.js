@@ -60,7 +60,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import axios from 'axios';
 import Header from '../../Components/Layout/Header';
 import Footer from '../../Components/Layout/Footer';
-import bankQRCode from '../../Assets/QR.jpeg';
+import bankQRCode from '../../Assets/QR1.jpeg';
 
 // Configuration - set these in your .env file
 const ADMIN_PHONE = process.env.REACT_APP_ADMIN_PHONE || "+919876543210"; // Default admin number
