@@ -27,10 +27,10 @@ const Contactus = () => {
                                 Kedarling Yatri Nivas
                             </Typography>
                             <Typography gutterBottom>
-                                📍Kolhapur , India
+                                📍 Mahalxmi Temple, Tarabai Road, Opp. Babujamal Darga, Kolhapur, Maharashtra
                             </Typography>
                             <Typography gutterBottom>📞 <a href="tel:+919960973828" style={{ color: "inherit" }}>+91 99609 73828</a></Typography>
-                            <Typography gutterBottom>📧 contact@hotelbliss.com</Typography>
+                            <Typography gutterBottom>📧 <a href="mailto:info@kedarlingyatrinivas.com" style={{ color: "inherit" }}>info@kedarlingyatrinivas.com</a></Typography>
 
                             <Box mt={3}>
                                 <iframe
