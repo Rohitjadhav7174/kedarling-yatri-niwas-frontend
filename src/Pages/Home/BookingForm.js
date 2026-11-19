@@ -192,9 +192,32 @@ const BookingForm = () => {
     setSelectedRooms(selectedRooms.filter(room => room.roomNumber !== roomNumber));
   };
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
+  // Shrink large photos so the upload stays under the server's size limit.
+  const compressImage = (file) => new Promise((resolve) => {
+    if (!file.type.startsWith('image/') || file.size < 1024 * 1024) return resolve(file);
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      const scale = Math.min(1, 1600 / Math.max(img.width, img.height));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(url);
+      canvas.toBlob(
+        (blob) => resolve(blob ? new File([blob], file.name.replace(/\.\w+$/, '') + '.jpg', { type: 'image/jpeg' }) : file),
+        'image/jpeg',
+        0.8
+      );
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
+    img.src = url;
+  });
+
+  const handleFileUpload = async (event) => {
+    const original = event.target.files[0];
+    if (original) {
+      const file = await compressImage(original);
       setPaymentProof(file);
       setUploadProgress(0);
       const interval = setInterval(() => {
@@ -264,7 +287,8 @@ const BookingForm = () => {
       
     } catch (error) {
       console.error('Error submitting booking:', error);
-      alert('Failed to submit booking. Please check your details and try again.');
+      const serverMessage = error.response?.data?.error || error.response?.data?.message;
+      alert(`Failed to submit booking. ${serverMessage ? `(${serverMessage}) ` : ''}Please check your details and try again, or call ${CONFIRMATION_PHONE}.`);
     } finally {
       setLoading(false);
     }
