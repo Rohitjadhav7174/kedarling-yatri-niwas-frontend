@@ -35,7 +35,7 @@ const Contactus = () => {
                             <Box mt={3}>
                                 <iframe
                                     title="kedarling-yatri-nivas-location"
-                                    src="https://www.google.com/maps/embed?pb=!4v1794647881070!6m8!1m7!1sTuoIiE4dnQSIXA1YmbLv6g!2m2!1d16.6945463653094!2d74.21958054196855!3f206.42882515319477!4f18.091205440303895!5f3.325193203789971"
+                                    src="https://maps.google.com/maps?q=16.6945463653094,74.21958054196855&z=17&output=embed"
                                     width="100%"
                                     height="350"
                                     style={{ border: 0, borderRadius: 8 }}
@@ -44,6 +44,16 @@ const Contactus = () => {
                                     referrerPolicy="no-referrer-when-downgrade"
                                 />
 
+                                <Button
+                                    variant="contained"
+                                    fullWidth
+                                    sx={{ mt: 2 }}
+                                    href="https://www.google.com/maps/dir/?api=1&destination=16.6945463653094,74.21958054196855"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Get Directions
+                                </Button>
                             </Box>
                         </Paper>
                     </Grid>
