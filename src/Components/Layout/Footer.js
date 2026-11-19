@@ -247,7 +247,7 @@ const CompactFooter = () => {
                   info@kedarlingyatrinivas.com
                 </a>
                 <a 
-                  href="tel:+917028174997"
+                  href="tel:+919960973828"
                   style={footerStyles.contactLink}
                   onMouseEnter={(e) => e.target.style.color = '#ff6b35'}
                   onMouseLeave={(e) => e.target.style.color = '#666'}
@@ -255,12 +255,12 @@ const CompactFooter = () => {
                     Satish Manager 
                 </a>
                 <a 
-                  href="tel:917028174997"
+                  href="tel:+919960973828"
                   style={footerStyles.contactLink}
                   onMouseEnter={(e) => e.target.style.color = '#ff6b35'}
                   onMouseLeave={(e) => e.target.style.color = '#666'}
                 >
-                  +917028174997
+                  +91 99609 73828
                 </a>
               </div>
             </div>

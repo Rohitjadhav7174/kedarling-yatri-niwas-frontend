@@ -67,9 +67,9 @@ const CONFIRMATION_PHONE = '+91 99609 73828';
 const CONFIRMATION_PHONE_LINK = 'tel:+919960973828';
 
 // Configuration - set these in your .env file
-const ADMIN_PHONE = process.env.REACT_APP_ADMIN_PHONE || "+919876543210"; // Default admin number
+const ADMIN_PHONE = process.env.REACT_APP_ADMIN_PHONE || "+919960973828"; // Default admin number
 const HOTEL_NAME = process.env.REACT_APP_HOTEL_NAME || "Our Hotel";
-const HOTEL_PHONE = process.env.REACT_APP_HOTEL_PHONE || "+911234567890";
+const HOTEL_PHONE = process.env.REACT_APP_HOTEL_PHONE || "+919960973828";
 
 const roomTypes = [
   {

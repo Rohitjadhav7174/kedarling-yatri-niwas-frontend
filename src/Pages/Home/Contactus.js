@@ -29,7 +29,7 @@ const Contactus = () => {
                             <Typography gutterBottom>
                                 📍Kolhapur , India
                             </Typography>
-                            <Typography gutterBottom>📞 +91 98765 43210</Typography>
+                            <Typography gutterBottom>📞 <a href="tel:+919960973828" style={{ color: "inherit" }}>+91 99609 73828</a></Typography>
                             <Typography gutterBottom>📧 contact@hotelbliss.com</Typography>
 
                             <Box mt={3}>
