@@ -34,10 +34,10 @@ const Contactus = () => {
 
                             <Box mt={3}>
                                 <iframe
-                                    title="kolhapur-resort-location"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3794.284505447001!2d74.23205937477393!3d16.691198384122028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc10038e3e66e6f%3A0x14c90e519d85897!2sSayaji%20Hotel%20Kolhapur!5e0!3m2!1sen!2sin!4v1712572023481!5m2!1sen!2sin"
+                                    title="kedarling-yatri-nivas-location"
+                                    src="https://www.google.com/maps/embed?pb=!4v1794647881070!6m8!1m7!1sTuoIiE4dnQSIXA1YmbLv6g!2m2!1d16.6945463653094!2d74.21958054196855!3f206.42882515319477!4f18.091205440303895!5f3.325193203789971"
                                     width="100%"
-                                    height="250"
+                                    height="350"
                                     style={{ border: 0, borderRadius: 8 }}
                                     allowFullScreen=""
                                     loading="lazy"
