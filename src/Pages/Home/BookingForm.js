@@ -58,9 +58,13 @@ import { DatePicker, TimePicker } from '@mui/x-date-pickers';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import axios from 'axios';
+
 import Header from '../../Components/Layout/Header';
 import Footer from '../../Components/Layout/Footer';
 import bankQRCode from '../../Assets/QR1.jpeg';
+
+const CONFIRMATION_PHONE = '+91 99609 73828';
+const CONFIRMATION_PHONE_LINK = 'tel:+919960973828';
 
 // Configuration - set these in your .env file
 const ADMIN_PHONE = process.env.REACT_APP_ADMIN_PHONE || "+919876543210"; // Default admin number
@@ -256,7 +260,7 @@ const BookingForm = () => {
       
      
 
-      alert(`Booking confirmed for ₹${totalAmount}! Confirmation sent via WhatsApp.`);
+      alert(`Booking confirmed for ₹${totalAmount}! Confirmation sent via WhatsApp.\n\nCall for confirmation: ${CONFIRMATION_PHONE}`);
       
     } catch (error) {
       console.error('Error submitting booking:', error);
@@ -634,12 +638,21 @@ const BookingForm = () => {
                 </>
               ) : (
                 <Grid item xs={12}>
-                  <Card sx={{ textAlign: 'center' }}>
+                  <Card id="booking-receipt" sx={{ textAlign: 'center' }}>
                     <CardContent>
+                      <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                        Kedarling Yatri Nivas
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary" gutterBottom>
+                        Booking Receipt
+                      </Typography>
                       <CheckIcon sx={{ fontSize: 64, color: 'success.main', mb: 2 }} />
                       <Typography variant="h4" gutterBottom color="success.main">
                         Booking Confirmed!
                       </Typography>
+                      {bookingId && (
+                        <Typography color="text.secondary">Booking ID: {bookingId}</Typography>
+                      )}
                       
                       <Box sx={{ my: 3 }}>
                         <Chip 
@@ -677,8 +690,36 @@ const BookingForm = () => {
                           ))}
                         </Box>
                       </Box>
+
+                      <Alert
+                        icon={<PhoneIcon />}
+                        severity="info"
+                        sx={{ mt: 3, maxWidth: 500, mx: 'auto', textAlign: 'left' }}
+                      >
+                        <Typography sx={{ fontWeight: 'bold' }}>Call for confirmation</Typography>
+                        <Typography variant="h6" component="a" href={CONFIRMATION_PHONE_LINK} sx={{ color: 'inherit' }}>
+                          {CONFIRMATION_PHONE}
+                        </Typography>
+                      </Alert>
+
+                      <Button
+                        className="no-print"
+                        variant="outlined"
+                        sx={{ mt: 3 }}
+                        onClick={() => window.print()}
+                      >
+                        Print Receipt
+                      </Button>
                     </CardContent>
                   </Card>
+                  <style>{`
+                    @media print {
+                      body * { visibility: hidden; }
+                      #booking-receipt, #booking-receipt * { visibility: visible; }
+                      #booking-receipt { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; }
+                      #booking-receipt .no-print { display: none; }
+                    }
+                  `}</style>
                 </Grid>
               )}
             </Grid>
@@ -716,6 +757,10 @@ const BookingForm = () => {
                 </Typography>
                 <Typography color="text.secondary">
                   Thank you for choosing our hotel. We look forward to hosting you!
+                </Typography>
+                <Typography sx={{ mt: 2, fontWeight: 'bold' }}>
+                  Call for confirmation:{' '}
+                  <a href={CONFIRMATION_PHONE_LINK}>{CONFIRMATION_PHONE}</a>
                 </Typography>
               </Box>
             ) : (
